@@ -1,0 +1,126 @@
+{
+  "title": "web_read output",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "status",
+    "url_final",
+    "title",
+    "content",
+    "content_type",
+    "truncated"
+  ],
+  "properties": {
+    "status": {
+      "type": "string",
+      "enum": [
+        "ok",
+        "blocked",
+        "timeout",
+        "too_large",
+        "http_error",
+        "network_error",
+        "parse_error",
+        "invalid_request",
+        "browser_error",
+        "internal_error"
+      ]
+    },
+    "url_final": {
+      "description": "重定向后的最终地址；没有完成导航时为 null。",
+      "oneOf": [{ "type": "string" }, { "type": "null" }]
+    },
+    "title": {
+      "description": "页面标题；缺失时为 null。",
+      "oneOf": [{ "type": "string" }, { "type": "null" }]
+    },
+    "content": {
+      "description": "正文。text/js 为纯文本，html 为精简 HTML；失败时可为 null 或部分内容。",
+      "oneOf": [{ "type": "string" }, { "type": "null" }]
+    },
+    "content_type": {
+      "description": "主文档 MIME 类型；未知时为 null。",
+      "oneOf": [{ "type": "string" }, { "type": "null" }]
+    },
+    "truncated": {
+      "type": "boolean",
+      "description": "是否因 max_bytes、单响应上限或传输预算而截断。"
+    },
+    "links": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["text", "url"],
+        "properties": {
+          "text": { "type": "string" },
+          "url": { "type": "string" }
+        }
+      }
+    },
+    "scripts": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["external", "inline", "dynamic"],
+      "properties": {
+        "external_count": { "type": "integer" },
+        "inline_count": { "type": "integer" },
+        "external": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["src"],
+            "properties": {
+              "src": { "type": "string" },
+              "type": { "oneOf": [{ "type": "string" }, { "type": "null" }] },
+              "async": { "type": "boolean" },
+              "defer": { "type": "boolean" },
+              "module": { "type": "boolean" }
+            }
+          }
+        },
+        "inline": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["index", "chars", "type", "flags"],
+            "properties": {
+              "index": { "type": "integer" },
+              "chars": { "type": "integer" },
+              "type": { "type": "string" },
+              "flags": {
+                "type": "array",
+                "items": { "type": "string" }
+              }
+            }
+          }
+        },
+        "dynamic": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["detected", "signals"],
+          "properties": {
+            "detected": { "type": "boolean" },
+            "signals": {
+              "type": "array",
+              "items": { "type": "string" }
+            },
+            "dom_mutations": { "type": "integer" },
+            "post_load_resources": { "type": "integer" }
+          }
+        }
+      }
+    },
+    "error": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["code", "message"],
+      "properties": {
+        "code": { "type": "string" },
+        "message": { "type": "string" }
+      }
+    }
+  }
+}

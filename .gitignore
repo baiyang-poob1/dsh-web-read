@@ -1,0 +1,21 @@
+# dependencies
+node_modules/
+.pnpm-store/
+.npm-cache/
+
+# local runtime output
+runtime-debug.log
+*.log
+dist/
+release/
+
+# editor / OS
+.DS_Store
+Thumbs.db
+desktop.ini
+.vscode/
+.idea/
+
+# test/coverage output
+coverage/
+.nyc_output/

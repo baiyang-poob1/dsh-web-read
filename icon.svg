@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64" role="img" aria-label="网页阅读">
+  <defs>
+    <linearGradient id="g" x1="8" y1="8" x2="56" y2="56" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#3b82f6"/>
+      <stop offset="1" stop-color="#14b8a6"/>
+    </linearGradient>
+  </defs>
+  <rect x="4" y="4" width="56" height="56" rx="14" fill="#0f172a"/>
+  <path d="M13 20.5c6.2-2.7 12.6-2.1 19 1.5v24c-6.4-3.6-12.8-4.2-19-1.5v-24Z" fill="url(#g)"/>
+  <path d="M51 20.5c-6.2-2.7-12.6-2.1-19 1.5v24c6.4-3.6 12.8-4.2 19-1.5v-24Z" fill="#e2e8f0"/>
+  <path d="M32 22v24" stroke="#0f172a" stroke-width="2.5" stroke-linecap="round"/>
+  <circle cx="42.5" cy="38.5" r="7.5" fill="none" stroke="#0f172a" stroke-width="2.4"/>
+  <path d="M38.2 38.5h8.6M42.5 34.2c2.1 2.6 2.1 6 0 8.6M42.5 34.2c-2.1 2.6-2.1 6 0 8.6" fill="none" stroke="#0f172a" stroke-width="1.8" stroke-linecap="round"/>
+</svg>

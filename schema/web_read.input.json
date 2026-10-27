@@ -1,0 +1,37 @@
+{
+  "title": "web_read input",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["url"],
+  "properties": {
+    "url": {
+      "type": "string",
+      "description": "要阅读的公网地址，只允许 http/https，默认只允许 80/443 端口；1-4096 字符。内网、回环、链路本地与云元数据地址会被拒绝。"
+    },
+    "mode": {
+      "type": "string",
+      "enum": ["text", "html", "js"],
+      "default": "text",
+      "description": "text：静态正文，不执行页面 JS；html：精简后的 HTML；js：执行页面 JS 后提取正文，并返回脚本来源和动态加载信号。"
+    },
+    "wait_for": {
+      "type": "string",
+      "description": "可选 CSS 选择器（最多 256 字符）。指定后等到该元素出现再提取，适合异步渲染的页面。"
+    },
+    "timeout_ms": {
+      "type": "integer",
+      "default": 10000,
+      "description": "本次读取的总时限，1000-30000 毫秒。超时返回结构化 TIMEOUT。"
+    },
+    "max_bytes": {
+      "type": "integer",
+      "default": 200000,
+      "description": "content 字段的 UTF-8 字节上限，1000-1000000；超出时截断并标记 truncated。"
+    },
+    "include_links": {
+      "type": "boolean",
+      "default": false,
+      "description": "是否在 links 中返回页面内 http/https 链接（最多 100 条）。"
+    }
+  }
+}

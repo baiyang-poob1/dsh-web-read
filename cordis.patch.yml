@@ -1,0 +1,18 @@
+# dsh-web-read 的 bundle patch。
+#
+# 安装到 profile 后，本文件由 launcher 叠加到配置树，插入 Host 侧的 web_read 工具。
+# 所有安全策略都在 worker/ 内强制执行，config 只能收窄，不能放宽内置的 SSRF 防护。
+- insert:
+    - id: tool-web-read
+      name: 'dsh-web-read'
+      config:
+        # 为空时允许全部公网域名；填入后变更为白名单（支持 example.com / *.example.com）。
+        allowedDomains: []
+        # 始终拒绝的域名；与 allowedDomains 同时生效。
+        deniedDomains: []
+        # 只允许标准 Web 端口；不要加入内网服务常用端口。
+        allowedPorts: [80, 443]
+        # 同时最多运行几个浏览器 worker（1-4）。
+        maxConcurrency: 2
+        # auto | edge | chrome；只会在固定安装路径中探测。
+        browser: auto

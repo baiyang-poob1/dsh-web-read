@@ -1,0 +1,6 @@
+{
+  "meta": {
+    "title": "Web Reader",
+    "description": "Read public web pages with a headless browser, including JavaScript-rendered content and script inspection."
+  }
+}

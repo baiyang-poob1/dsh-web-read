@@ -1,71 +1,14 @@
 {
-  "name": "dsh-web-read",
+  "name": "dsh-web-reader",
   "version": "1.0.0",
-  "description": "DeepSeek Harness 网页阅读插件：在独立 worker 中用无头浏览器读取公网网页，支持静态正文、精简 HTML、JS 渲染与脚本检查。",
-  "type": "module",
-  "main": "lib/index.js",
-  "exports": {
-    ".": "./lib/index.js",
-    "./cordis.patch.yml": "./cordis.patch.yml",
-    "./package.json": "./package.json",
-    "./locale/*.json": "./locale/*.json",
-    "./icon": "./icon.svg",
-    "./schema/*.json": "./schema/*.json"
-  },
-  "files": [
-    "lib",
-    "worker",
-    "schema",
-    "locale",
-    "icon.svg",
-    "cordis.patch.yml",
-    "README.md",
-    "LICENSE",
-    "SECURITY.md",
-    "CHANGELOG.md",
-    "PUBLISHING.md",
-    "test"
-  ],
-  "scripts": {
-    "test": "node --test test/policy.test.mjs test/host.test.mjs test/schema.test.mjs",
-    "test:live": "node test/host-live.mjs"
-  },
-  "keywords": [
-    "deepseek-harness",
-    "dsh",
-    "dsh-plugin",
-    "web-reader",
-    "headless-browser",
-    "readability",
-    "ssrf"
-  ],
-  "author": "dsh-web-read contributors",
-  "engines": {
-    "node": ">=22"
-  },
+  "private": false,
+  "license": "MIT",
+  "repository": { "type": "git", "url": "https://github.com/baiyang-poob1/dsh-web-read" },
+  "keywords": ["dsh-plugin", "dsh", "deepseek-harness", "web-reader", "browser"],
   "dsh": {
     "bundle": {
       "patch": "./cordis.patch.yml"
-    },
-    "permissions": {
-      "network": {
-        "egress": "public-http-https-only",
-        "ports": [80, 443],
-        "sandboxedProxy": true,
-        "credentials": "none"
-      },
-      "process": {
-        "spawn": ["headless-browser", "isolated-worker"],
-        "shell": false
-      },
-      "filesystem": {
-        "scope": "ephemeral-temp-only",
-        "workspace": "none"
-      },
-      "hostApis": [],
-      "secrets": [],
-      "codeExecution": false
     }
   },
-  "license": "MIT"
+  "files": ["lib", "cordis.patch.yml", "README.md"]
 }

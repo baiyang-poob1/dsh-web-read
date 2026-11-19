@@ -1,0 +1,26 @@
+{
+  "format": 1,
+  "title": { "en": "DSH Web Reader", "zh": "网页阅读器" },
+  "plugins": [
+    {
+      "name": "dsh-web-reader",
+      "title": { "zh": "网页阅读器", "en": "Web Reader" },
+      "description": "安全地读取网页内容，支持 JS 渲染，具备 SSRF 防护。",
+      "author": "白杨",
+      "homepage": "https://github.com/baiyang-poob1/dsh-web-read#readme",
+      "repository": { "url": "https://github.com/baiyang-poob1/dsh-web-read" },
+      "versions": [
+        {
+          "version": "1.0.0",
+          "publishTimestamp": 1793000000,
+          "source": {
+            "type": "git",
+            "url": "https://github.com/baiyang-poob1/dsh-web-read",
+            "commit": "40位commit SHA"
+          },
+          "engines": { "dsh": ">=0.2.0-rc.3" }
+        }
+      ]
+    }
+  ]
+}
